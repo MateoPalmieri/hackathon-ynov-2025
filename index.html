@@ -4,77 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hackathon Ynov 2025</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        header {
-            background-color: #2e8b57;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #3cb371;
-        }
-        nav a {
-            color: white;
-            padding: 1rem;
-            text-decoration: none;
-        }
-        nav a:hover {
-            background-color: #2e8b57;
-        }
-        section {
-            padding: 2rem;
-            text-align: center;
-        }
-        .quiz-container {
-            display: none;
-        }
-        .quiz-question {
-            margin-bottom: 1rem;
-        }
-        button {
-            background-color: #3cb371;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #2e8b57;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem 0;
-            background-color: #2e8b57;
-            color: white;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
         <h1>Éco-Actions</h1>
         <p>Utilisez l'IA pour réduire votre impact environnemental</p>
     </header>
+
     <nav>
         <a href="#home">Accueil</a>
         <a href="#quiz">Quiz</a>
-        <a href="#chatbot">Chatbot</a>
+        <a href="#cards">Cartes</a>
     </nav>
+
     <section id="home">
         <h2>Comment l’IA peut-elle transformer nos habitudes pour réduire notre impact environnemental ?</h2>
     </section>
+
     <section id="quiz">
         <h2>Quiz Interactif</h2>
         <div class="quiz-container" id="quizContainer">
@@ -88,18 +36,45 @@
             </div>
         </div>
     </section>
-    <section id="chatbot">
-        <h2>Chatbot Écologique</h2>
-        <p>Notre chatbot est en développement. Revenez bientôt pour discuter avec lui !</p>
+
+    <section id="cards">
+        <h2>Conseils Écologiques</h2>
+        <div class="card-container">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <p>Comment réduire ma consommation électrique ?</p>
+                    </div>
+                    <div class="card-back">
+                        <p>Pour réduire votre consommation électrique, éteignez les appareils en veille, utilisez des ampoules LED, et optimisez l'utilisation de vos appareils électroménagers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <p>Quels sont les avantages du recyclage ?</p>
+                    </div>
+                    <div class="card-back">
+                        <p>Le recyclage réduit la pollution, économise les ressources naturelles, et diminue les émissions de gaz à effet de serre en réduisant le besoin de produire de nouveaux matériaux.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <p>Comment puis-je réduire mon empreinte carbone ?</p>
+                    </div>
+                    <div class="card-back">
+                        <p>Vous pouvez réduire votre empreinte carbone en utilisant les transports en commun, en mangeant moins de viande, en recyclant, et en réduisant votre consommation d'énergie.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
+
     <footer>
         <p>&copy; 2025 Hackathon Ynov. Tous droits réservés.</p>
     </footer>
-    <script>
-        function nextQuestion() {
-            alert("Merci pour votre réponse ! Voici quelques conseils personnalisés...");
-            // Ajoutez ici la logique pour passer à la question suivante ou afficher des conseils.
-        }
-    </script>
 </body>
 </html>
