@@ -3,271 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hackathon Ynov 2025</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script/game.js" defer></script>
-    <script src="script/quiz2.js" defer></script>
+    <title>🌱 IA & Écologie 🌍</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+            line-height: 1.6;
+            background: #f9fafb;
+            text-align: center;
+        }
+        .section {
+            padding: 60px 20px;
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h2 {
+            font-size: 2.5em;
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #10b981;
+            color: white;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #059669;
+        }
+        .question {
+            margin-bottom: 20px;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            perspective: 1000px;
+            width: 200px;
+        }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 120px;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        .card-inner.flipped {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .card-back {
+            transform: rotateY(180deg);
+            background: #fff;
+        }
+        #game-area {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        .stats-list, .practices-list {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .stats-list li, .practices-list li {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Éco-Actions</h1>
-    </header>
 
-    <nav>
-        <a href="#home">Accueil</a>
-        <a href="#interactive-quiz">Quizz</a>
-        <a href="#cards">Cartes</a>
-    </nav>
-
-    <section id="home">
-        <h2>Comment l’IA peut-elle transformer nos habitudes pour réduire notre impact environnemental ?</h2>
-        <p style="text-align: start;">
-            L'intelligence artificielle (IA) peut réduire notre impact environnemental en optimisant l'efficacité énergétique, réduisant ainsi la consommation d'énergie et les émissions de gaz à effet de serre. Un projet soutenu par la National Science Foundation vise à diminuer l'empreinte carbone du calcul de 45 % d'ici la prochaine décennie grâce à des protocoles standardisés.
-        </p>
-        <p style="text-align: start;">
-De plus, l'IA améliore la gestion des déchets en triant automatiquement les matériaux recyclables, augmentant les taux de recyclage et réduisant les coûts. Elle permet également une gestion plus durable des ressources naturelles comme l'eau et les forêts en fournissant des données précises en temps réel.
-        </p>
+    <section id="quiz" class="section">
+        <h2>🧠 Quiz IA & Environnement</h2>
+        <div class="question">
+            <p>1. Quel est l'impact moyen de la reconnaissance d'image assistée par IA sur la consommation d'énergie ?</p>
+            <label><input type="radio" name="q1" value="a"> a) +10 %</label><br>
+            <label><input type="radio" name="q1" value="b"> b) -5 %</label><br>
+            <label><input type="radio" name="q1" value="c"> c) 0 %</label><br>
+        </div>
+        <div class="question">
+            <p>2. Quelle pratique IA peut réduire le gaspillage alimentaire ?</p>
+            <label><input type="radio" name="q2" value="a"> a) Prédiction de la demande</label><br>
+            <label><input type="radio" name="q2" value="b"> b) Génération de recettes</label><br>
+            <label><input type="radio" name="q2" value="c"> c) Analyse de sentiments</label><br>
+        </div>
+        <button onclick="checkQuiz()">✅ Vérifier</button>
+        <p id="quiz-result"></p>
     </section>
 
-    <section id="interactive-quiz">
-        <h2>Quiz Écologique</h2>
-        <div class="quiz-container">
-            <div class="quiz-question" id="question1">
-                <p>Quelle est la meilleure façon de réduire votre consommation d'eau ?</p>
-                <div class="quiz-options">
-                    <button class="quiz-option" onclick="showFeedback('feedback1')">Prendre des bains longs</button>
-                    <button class="quiz-option" onclick="showFeedback('feedback1')">Installer des pommeaux de douche économes</button>
-                    <button class="quiz-option" onclick="showFeedback('feedback1')">Laisser couler l'eau en se brossant les dents</button>
-                </div>
-                <div class="feedback" id="feedback1">
-                    <p>Installer des pommeaux de douche économes est une excellente façon de réduire votre consommation d'eau !</p>
+    <section id="flip-cards" class="section">
+        <h2>❓ Questions / Réponses</h2>
+        <div class="cards-container">
+            <div class="card" onclick="flip(this)">
+                <div class="card-inner">
+                    <div class="card-front">Qu'est-ce que l'IA ?</div>
+                    <div class="card-back">Un ensemble d'algorithmes capables d'apprendre et d'exécuter des tâches intelligentes.</div>
                 </div>
             </div>
-
-            <div class="quiz-question" id="question2">
-                <p>Quel type de transport est le plus écologique pour les trajets quotidiens ?</p>
-                <div class="quiz-options">
-                    <button class="quiz-option" onclick="showFeedback('feedback2')">Voiture individuelle</button>
-                    <button class="quiz-option" onclick="showFeedback('feedback2')">Transports en commun</button>
-                    <button class="quiz-option" onclick="showFeedback('feedback2')">Avion</button>
-                </div>
-                <div class="feedback" id="feedback2">
-                    <p>Les transports en commun sont généralement plus écologiques pour les trajets quotidiens !</p>
+            <div class="card" onclick="flip(this)">
+                <div class="card-inner">
+                    <div class="card-front">Comment l'IA aide-t-elle à réduire le CO₂ ?</div>
+                    <div class="card-back">Optimisation des transports et de la consommation énergétique.</div>
                 </div>
             </div>
-
-            <div class="quiz-question" id="question3">
-                <p>Comment pouvez-vous réduire votre empreinte carbone liée à l'alimentation ?</p>
-                <div class="quiz-options">
-                    <button class="quiz-option" onclick="showFeedback('feedback3')">Manger plus de viande rouge</button>
-                    <button class="quiz-option" onclick="showFeedback('feedback3')">Acheter des produits locaux et de saison</button>
-                    <button class="quiz-option" onclick="showFeedback('feedback3')">Privilégier les aliments importés</button>
-                </div>
-                <div class="feedback" id="feedback3">
-                    <p>Acheter des produits locaux et de saison aide à réduire votre empreinte carbone liée à l'alimentation !</p>
+            <div class="card" onclick="flip(this)">
+                <div class="card-inner">
+                    <div class="card-front">Exemple d'application IA écolo ?</div>
+                    <div class="card-back">Application de suivi des déchets et prédiction de collecte.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="quiz-ia-efficacite-energetique">
-    <h2>Quiz : L'IA et l'Efficacité Énergétique</h2>
-    <div class="quiz-container">
-        <div class="quiz-question" id="question1">
-            <p>Comment l'IA peut-elle aider à réduire la consommation d'énergie dans les foyers ?</p>
-            <div class="quiz-options">
-                <button class="quiz-option" onclick="showFeedback('feedback1')">En augmentant automatiquement la température du chauffage</button>
-                <button class="quiz-option" onclick="showFeedback('feedback1')">En optimisant l'utilisation des appareils électroménagers via des algorithmes intelligents</button>
-                <button class="quiz-option" onclick="showFeedback('feedback1')">En laissant tous les appareils en veille</button>
-            </div>
-            <div class="feedback" id="feedback1">
-                <p>En optimisant l'utilisation des appareils électroménagers via des algorithmes intelligents</p>
-            </div>
-        </div>
-
-        <div class="quiz-question" id="question2">
-            <p>Quel est l'avantage des thermostats intelligents utilisant l'IA ?</p>
-            <div class="quiz-options">
-                <button class="quiz-option" onclick="showFeedback('feedback2')">Ils consomment plus d'énergie pour fonctionner</button>
-                <button class="quiz-option" onclick="showFeedback('feedback2')">Ils apprennent les habitudes des utilisateurs et ajustent le chauffage pour économiser de l'énergie</button>
-                <button class="quiz-option" onclick="showFeedback('feedback2')">Ils nécessitent une intervention manuelle constante</button>
-            </div>
-            <div class="feedback" id="feedback2">
-                <p>Ils apprennent les habitudes des utilisateurs et ajustent le chauffage pour économiser de l'énergie</p>
-            </div>
-        </div>
-
-        <div class="quiz-question" id="question3">
-            <p>Comment l'IA peut-elle contribuer à l'efficacité énergétique des bâtiments commerciaux ?</p>
-            <div class="quiz-options">
-                <button class="quiz-option" onclick="showFeedback('feedback3')">En gardant toutes les lumières allumées 24/7</button>
-                <button class="quiz-option" onclick="showFeedback('feedback3')">En analysant les données pour optimiser l'éclairage, le chauffage et la climatisation</button>
-                <button class="quiz-option" onclick="showFeedback('feedback3')">En utilisant plus d'appareils électriques</button>
-            </div>
-            <div class="feedback" id="feedback3">
-                <p>En analysant les données pour optimiser l'éclairage, le chauffage et la climatisation</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="quiz-ia-mobilite-durable">
-    <h2>Quiz : L'IA et la Mobilité Durable</h2>
-    <div class="quiz-container">
-        <div class="quiz-question" id="question4">
-            <p>Comment l'IA peut-elle encourager l'utilisation des transports en commun ?</p>
-            <div class="quiz-options">
-                <button class="quiz-option" onclick="showFeedback('feedback4')">En rendant les transports en commun plus chers</button>
-                <button class="quiz-option" onclick="showFeedback('feedback4')">En optimisant les itinéraires et les horaires pour améliorer l'efficacité et la ponctualité</button>
-                <button class="quiz-option" onclick="showFeedback('feedback4')">En supprimant les lignes de bus</button>
-            </div>
-            <div class="feedback" id="feedback4">
-                <p>En optimisant les itinéraires et les horaires pour améliorer l'efficacité et la ponctualité</p>
-            </div>
-        </div>
-
-        <div class="quiz-question" id="question5">
-            <p>Quel rôle l'IA peut-elle jouer dans la réduction des embouteillages ?</p>
-            <div class="quiz-options">
-                <button class="quiz-option" onclick="showFeedback('feedback5')">En augmentant le nombre de voitures sur les routes</button>
-                <button class="quiz-option" onclick="showFeedback('feedback5')">En analysant le trafic en temps réel et en suggérant des itinéraires alternatifs</button>
-                <button class="quiz-option" onclick="showFeedback('feedback5')">En fermant des routes aléatoirement</button>
-            </div>
-            <div class="feedback" id="feedback5">
-                <p>En analysant le trafic en temps réel et en suggérant des itinéraires alternatifs</p>
-            </div>
-        </div>
-
-        <div class="quiz-question" id="question6">
-            <p>Comment les véhicules autonomes peuvent-ils réduire les émissions de CO2 ?</p>
-            <div class="quiz-options">
-                <button class="quiz-option" onclick="showFeedback('feedback6')">En roulant à des vitesses très élevées</button>
-                <button class="quiz-option" onclick="showFeedback('feedback6')">En optimisant les trajets et en réduisant les temps d'arrêt</button>
-                <button class="quiz-option" onclick="showFeedback('feedback6')">En utilisant plus de carburant</button>
-            </div>
-            <div class="feedback" id="feedback6">
-                <p>En optimisant les trajets et en réduisant les temps d'arrêt</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="quiz-ia-gestion-dechets">
-    <h2>Quiz : L'IA et la Gestion des Déchets</h2>
-    <div class="quiz-container">
-        <div class="quiz-question" id="question7">
-            <p>Comment l'IA peut-elle améliorer le recyclage ?</p>
-            <div class="quiz-options">
-                <button class="quiz-option" onclick="showFeedback('feedback7')">En mélangeant tous les types de déchets ensemble</button>
-                <button class="quiz-option" onclick="showFeedback('feedback7')">En triant automatiquement les déchets à l'aide de robots et de capteurs intelligents</button>
-                <button class="quiz-option" onclick="showFeedback('feedback7')">En brûlant tous les déchets</button>
-            </div>
-            <div class="feedback" id="feedback7">
-                <p>En triant automatiquement les déchets à l'aide de robots et de capteurs intelligents</p>
-            </div>
-        </div>
-
-        <div class="quiz-question" id="question8">
-            <p>Quel est l'avantage des poubelles intelligentes utilisant l'IA ?</p>
-            <div class="quiz-options">
-                <button class="quiz-option" onclick="showFeedback('feedback8')">Elles augmentent la quantité de déchets produits</button>
-                <button class="quiz-option" onclick="showFeedback('feedback8')">Elles compactent les déchets pour réduire le volume et optimiser la collecte</button>
-                <button class="quiz-option" onclick="showFeedback('feedback8')">Elles ne nécessitent jamais d'être vidées</button>
-            </div>
-            <div class="feedback" id="feedback8">
-                <p>Elles compactent les déchets pour réduire le volume et optimiser la collecte</p>
-            </div>
-        </div>
-
-        <div class="quiz-question" id="question9">
-            <p>Comment l'IA peut-elle aider à réduire le gaspillage alimentaire ?</p>
-            <div class="quiz-options">
-                <button class="quiz-option" onclick="showFeedback('feedback9')">En jetant automatiquement tous les aliments périmés</button>
-                <button class="quiz-option" onclick="showFeedback('feedback9')">En analysant les habitudes de consommation et en suggérant des recettes pour utiliser les restes</button>
-                <button class="quiz-option" onclick="showFeedback('feedback9')">En achetant plus de nourriture que nécessaire</button>
-            </div>
-            <div class="feedback" id="feedback9">
-                <p>En analysant les habitudes de consommation et en suggérant des recettes pour utiliser les restes</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <section id="cards">
-        <h2>Conseils Écologiques</h2>
-        <div class="card-container">
-            <div class="card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <p>Comment réduire ma consommation électrique ?</p>
-                    </div>
-                    <div class="card-back">
-                        <p>Pour réduire votre consommation électrique, éteignez les appareils en veille, utilisez des ampoules LED, et optimisez l'utilisation de vos appareils électroménagers.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <p>Quels sont les avantages du recyclage ?</p>
-                    </div>
-                    <div class="card-back">
-                        <p>Le recyclage réduit la pollution, économise les ressources naturelles, et diminue les émissions de gaz à effet de serre en réduisant le besoin de produire de nouveaux matériaux.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-inner">
-                    <div class="card-front">
-                        <p>Comment puis-je réduire mon empreinte carbone ?</p>
-                    </div>
-                    <div class="card-back">
-                        <p>Vous pouvez réduire votre empreinte carbone en utilisant les transports en commun, en mangeant moins de viande, en recyclant, et en réduisant votre consommation d'énergie.</p>
-                    </div>
-                </div>
-            </div>
+    <section id="mini-game" class="section">
+        <h2>🌳 Mini-jeu : Plante des arbres</h2>
+        <div id="game-area">
+            <p>⏱️ Temps restant : <span id="timer">10</span>s</p>
+            <p>🌲 Arbres plantés : <span id="score">0</span></p>
+            <button id="tree-btn" onclick="plantTree()" disabled>🌱 Planter un arbre</button>
+            <button onclick="startGame()">🎮 Démarrer le jeu</button>
+            <p>CO2 économisé : <span id="co2-saved">0 kg</span></p>
         </div>
     </section>
-    <section id="game">
-        <h1>Jeu de Tri des Déchets</h1>
-  <p>Faites glisser chaque déchet dans la bonne poubelle pour apprendre à mieux recycler !</p>
 
-  <div class="container">
-    <div class="bin" data-type="recyclable" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <div class="bin-content"></div>
-    </div>
-    <div class="bin" data-type="verre" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <div class="bin-content"></div>
-    </div>
-    <div class="bin" data-type="ordures" ondrop="drop(event)" ondragover="allowDrop(event)">
-      <div class="bin-content"></div>
-    </div>
-  </div>
+    <section id="stats" class="section">
+        <h2>📊 Chiffres clés</h2>
+        <ul class="stats-list">
+            <li>🌍 L'IA permet en moyenne de réduire <strong style="font-size: large;">1,5 tonne</strong> de CO₂ par an et par entreprise.</li>
+            <li>🔥 Utilisation d'IA pour optimiser le chauffage : <strong style="font-size: large;">-12 %</strong> de consommation.</li>
+            <li>🍽️ Prédiction des besoins alimentaires : diminution de <strong style="font-size: large;">20 %</strong> du gaspillage.</li>
+            <li>👤 Adoption individuelle : jusqu'à <strong style="font-size: large;">100 kg</strong> de CO₂ économisés/an.</li>
+        </ul>
+    </section>
 
-  <div class="items" id="itemsContainer"></div>
+    <section id="practices" class="section">
+        <h2>💡 Bonnes pratiques</h2>
+        <ul class="practices-list">
+            <li>🏠 Intégrer des modèles IA pour optimiser la consommation énergétique à domicile.</li>
+            <li>🥦 Utiliser des applications de prédiction pour réduire le gaspillage alimentaire.</li>
+            <li>🚗 Opter pour des transports optimisés par IA (covoiturage, itinéraires efficients).</li>
+            <li>🛠️ Adopter des systèmes de maintenance prédictive pour prolonger la durée de vie des équipements.</li>
+        </ul>
+    </section>
 
-  <button id="resetBtn" onclick="resetGame()">Réinitialiser le jeu</button>
+    <script>
+        function checkQuiz() {
+            let score = 0;
+            const answers = { q1: 'b', q2: 'a' };
+            for (let q in answers) {
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+                if (selected && selected.value === answers[q]) score++;
+            }
+            document.getElementById('quiz-result').textContent = `🎉 Résultat : ${score}/2`;
+        }
 
-  <audio id="sound-verre" src="sounds/verre.mp3"></audio>
-  <audio id="sound-ordures" src="sounds/poubelle.mp3"></audio>
-  <audio id="sound-recyclable" src="sounds/papier.mp3"></audio>
-  </section>
-  <section id="quiz2">
-    <div id="quiz2-container">
-    <h2>Éco-Réflexes IA</h2>
-    <div id="score-display">Consommation de CO₂ : 0g</div>
-    <div id="2">
-      <div class="question" id="question">Chargement...</div>
-      <div class="choices" id="choices"></div>
-      <div id="result"></div>
-      <button id="next-btn" style="display: none;" onclick="nextQuestion()">Question suivante</button>
-      <div id="final-result"></div>
-      <button id="retry-btn" style="display: none;" onclick="restartQuiz()">Rejouer</button>
-    </div>
-  </div>
-  </section>
-    <footer>
-        <p>&copy; 2025 Hackathon Ynov. Tous droits réservés.</p>
-    </footer> -->
+        function flip(card) {
+            const inner = card.querySelector('.card-inner');
+            inner.classList.toggle('flipped');
+        }
+
+        let timerId, time, score;
+        const co2PerTreePerYear = 22; // kg de CO2 absorbé par un arbre par an
+
+        function startGame() {
+            time = 10;
+            score = 0;
+            document.getElementById('timer').textContent = time;
+            document.getElementById('score').textContent = score;
+            document.getElementById('co2-saved').textContent = '0 kg';
+            document.getElementById('tree-btn').disabled = false;
+            clearInterval(timerId);
+            timerId = setInterval(() => {
+                time--;
+                document.getElementById('timer').textContent = time;
+                if (time <= 0) {
+                    clearInterval(timerId);
+                    document.getElementById('tree-btn').disabled = true;
+                }
+            }, 1000);
+        }
+
+        function plantTree() {
+            score++;
+            document.getElementById('score').textContent = score;
+            // Calculer le CO2 économisé
+            const co2Saved = score * co2PerTreePerYear;
+            document.getElementById('co2-saved').textContent = `${co2Saved} kg`;
+        }
+    </script>
+
 </body>
 </html>
