@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Ynov 2025</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #2e8b57;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #3cb371;
+        }
+        nav a {
+            color: white;
+            padding: 1rem;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #2e8b57;
+        }
+        section {
+            padding: 2rem;
+            text-align: center;
+        }
+        .quiz-container {
+            display: none;
+        }
+        .quiz-question {
+            margin-bottom: 1rem;
+        }
+        button {
+            background-color: #3cb371;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2e8b57;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #2e8b57;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Éco-Actions</h1>
+        <p>Utilisez l'IA pour réduire votre impact environnemental</p>
+    </header>
+    <nav>
+        <a href="#home">Accueil</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#chatbot">Chatbot</a>
+    </nav>
+    <section id="home">
+        <h2>Comment l’IA peut-elle transformer nos habitudes pour réduire notre impact environnemental ?</h2>
+    </section>
+    <section id="quiz">
+        <h2>Quiz Interactif</h2>
+        <div class="quiz-container" id="quizContainer">
+            <div class="quiz-question">
+                <p>Combien de fois utilisez-vous des sacs plastiques par semaine ?</p>
+                <button onclick="nextQuestion()">Répondre</button>
+            </div>
+            <div class="quiz-question">
+                <p>Quel type de transport utilisez-vous le plus souvent ?</p>
+                <button onclick="nextQuestion()">Répondre</button>
+            </div>
+        </div>
+    </section>
+    <section id="chatbot">
+        <h2>Chatbot Écologique</h2>
+        <p>Notre chatbot est en développement. Revenez bientôt pour discuter avec lui !</p>
+    </section>
+    <footer>
+        <p>&copy; 2025 Hackathon Ynov. Tous droits réservés.</p>
+    </footer>
+    <script>
+        function nextQuestion() {
+            alert("Merci pour votre réponse ! Voici quelques conseils personnalisés...");
+            // Ajoutez ici la logique pour passer à la question suivante ou afficher des conseils.
+        }
+    </script>
+</body>
+</html>
