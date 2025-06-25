@@ -15,7 +15,7 @@
 
     <nav>
         <a href="#home">Accueil</a>
-        <a href="#quiz">Quiz</a>
+        <a href="#interactive-quiz">Quizz</a>
         <a href="#cards">Cartes</a>
     </nav>
 
@@ -23,16 +23,43 @@
         <h2>Comment l’IA peut-elle transformer nos habitudes pour réduire notre impact environnemental ?</h2>
     </section>
 
-    <section id="quiz">
-        <h2>Quiz Interactif</h2>
-        <div class="quiz-container" id="quizContainer">
-            <div class="quiz-question">
-                <p>Combien de fois utilisez-vous des sacs plastiques par semaine ?</p>
-                <button onclick="nextQuestion()">Répondre</button>
+    <section id="interactive-quiz">
+        <h2>Quiz Écologique</h2>
+        <div class="quiz-container">
+            <div class="quiz-question" id="question1">
+                <p>Quelle est la meilleure façon de réduire votre consommation d'eau ?</p>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="showFeedback('feedback1')">Prendre des bains longs</button>
+                    <button class="quiz-option" onclick="showFeedback('feedback1')">Installer des pommeaux de douche économes</button>
+                    <button class="quiz-option" onclick="showFeedback('feedback1')">Laisser couler l'eau en se brossant les dents</button>
+                </div>
+                <div class="feedback" id="feedback1">
+                    <p>Installer des pommeaux de douche économes est une excellente façon de réduire votre consommation d'eau !</p>
+                </div>
             </div>
-            <div class="quiz-question">
-                <p>Quel type de transport utilisez-vous le plus souvent ?</p>
-                <button onclick="nextQuestion()">Répondre</button>
+
+            <div class="quiz-question" id="question2">
+                <p>Quel type de transport est le plus écologique pour les trajets quotidiens ?</p>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="showFeedback('feedback2')">Voiture individuelle</button>
+                    <button class="quiz-option" onclick="showFeedback('feedback2')">Transports en commun</button>
+                    <button class="quiz-option" onclick="showFeedback('feedback2')">Avion</button>
+                </div>
+                <div class="feedback" id="feedback2">
+                    <p>Les transports en commun sont généralement plus écologiques pour les trajets quotidiens !</p>
+                </div>
+            </div>
+
+            <div class="quiz-question" id="question3">
+                <p>Comment pouvez-vous réduire votre empreinte carbone liée à l'alimentation ?</p>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="showFeedback('feedback3')">Manger plus de viande rouge</button>
+                    <button class="quiz-option" onclick="showFeedback('feedback3')">Acheter des produits locaux et de saison</button>
+                    <button class="quiz-option" onclick="showFeedback('feedback3')">Privilégier les aliments importés</button>
+                </div>
+                <div class="feedback" id="feedback3">
+                    <p>Acheter des produits locaux et de saison aide à réduire votre empreinte carbone liée à l'alimentation !</p>
+                </div>
             </div>
         </div>
     </section>
@@ -73,8 +100,8 @@
         </div>
     </section>
 
-    <footer>
+    <!-- <footer>
         <p>&copy; 2025 Hackathon Ynov. Tous droits réservés.</p>
-    </footer>
+    </footer> -->
 </body>
 </html>
