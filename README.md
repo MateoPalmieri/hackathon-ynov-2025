@@ -32,7 +32,7 @@ Afin de rendre le site le plus simple et accessible possible.
 
 - ZEGHONDA Gael
 - VIAL - - SIMON Benjamin
-- BOUSETTA Mehdi Racim
+- VOCANSON Mattéo
 - Matéo PALMIERI
 
 ---
