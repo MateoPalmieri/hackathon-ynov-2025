@@ -4,6 +4,7 @@ body {
     padding: 0;
     background-color: #f4f4f9;
     color: #333;
+    scroll-behavior: smooth;
 }
 header {
     background-color: #2e8b57;
@@ -101,7 +102,7 @@ footer {
     }
 
 /* Quizz section */
-.quiz-container {
+/* .quiz-container {
         max-width: 600px;
         margin: 20px auto;
         padding: 20px;
@@ -144,7 +145,81 @@ footer {
         color: white;
         border-radius: 5px;
         display: none;
-    }
+    } */
+
+#interactive-quiz {
+  
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  color: #1a472a;
+}
+
+#interactive-quiz h2 {
+  text-align: center;
+  color: #14532d; /* vert foncé */
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.quiz-question {
+  background-color: #e6f4ea;
+  border-left: 6px solid #15803d; /* vert moyen */
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.quiz-question p {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.quiz-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.quiz-option {
+  flex: 1 1 calc(50% - 1rem); /* 2 par ligne avec un petit espace */
+  background-color: #d1fae5;
+  border: 2px solid #10b981;
+  color: #065f46;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.quiz-option:hover {
+  background-color: #a7f3d0;
+  transform: scale(1.02);
+}
+
+.feedback {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #ecfdf5;
+  border-left: 4px solid #059669;
+  border-radius: 0.375rem;
+  display: none;
+  color: #064e3b;
+  font-style: italic;
+}
+
+.feedback p {
+  margin: 0;
+}
 
 
 /* Cards section */
@@ -222,17 +297,17 @@ footer {
       flex-shrink: 0;
     }
 
-    .bin[data-type="recyclable"] {
-      background-image: url('images/papier.png');
-    }
+.bin[data-type="recyclable"] {
+    background-image: url('images/papier.png');
+}
 
-    .bin[data-type="verre"] {
-      background-image: url('images/verre.png');
-    }
+.bin[data-type="verre"] {
+    background-image: url('images/verre.png');
+}
 
-    .bin[data-type="ordures"] {
-      background-image: url('images/poubelle.png');
-    }
+.bin[data-type="ordures"] {
+    background-image: url('images/poubelle.png');
+}
 
     .bin-content {
       flex: 1;
@@ -246,9 +321,9 @@ footer {
       max-height: 60px;
     }
 
-    .bin-content::-webkit-scrollbar {
-      display: none;
-    }
+.bin-content::-webkit-scrollbar {
+    display: none;
+}
 
     .item {
       width: 100px;

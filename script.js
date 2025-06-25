@@ -64,11 +64,19 @@ const allItems = [
     }
 
     window.onload = resetGame;
-    function showFeedback(feedbackId) {
+
+function showFeedback(feedbackId) {
     // Hide all feedback first
     document.querySelectorAll('.feedback').forEach(function(el) {
         el.style.display = 'none';
     });
 
     // Show the selected feedback
-    document.getElementById(feedbackId).style.display = 'block';}
+    const feedbackElement = document.getElementById(feedbackId);
+    feedbackElement.style.display = 'block';
+
+    // Hide the feedback after 4 seconds
+    setTimeout(function() {
+        feedbackElement.style.display = 'none';
+    }, 4000); // 4000 milliseconds = 4 seconds
+}
