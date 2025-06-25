@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hackathon Ynov 2025</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script src="script/game.js" defer></script>
+    <script src="script/quiz2.js" defer></script>
 </head>
 <body>
     <header>
@@ -88,15 +89,28 @@
     </div>
   </div>
 
-  <div class="items" id="itemsContainer">
-    <!-- Les items seront générés dynamiquement -->
-  </div>
+  <div class="items" id="itemsContainer"></div>
 
   <button id="resetBtn" onclick="resetGame()">Réinitialiser le jeu</button>
 
   <audio id="sound-verre" src="sounds/verre.mp3"></audio>
   <audio id="sound-ordures" src="sounds/poubelle.mp3"></audio>
   <audio id="sound-recyclable" src="sounds/papier.mp3"></audio>
+  </section>
+  <section id="quiz2">
+    <div id="quiz2-container">
+    <h2>Éco-Réflexes IA</h2>
+    <div id="score-display">Consommation de CO₂ : 0g</div>
+    <div id="2">
+      <div class="question" id="question">Chargement...</div>
+      <div class="choices" id="choices"></div>
+      <div id="result"></div>
+      <button id="next-btn" style="display: none;" onclick="nextQuestion()">Question suivante</button>
+      <div id="final-result"></div>
+      <button id="retry-btn" style="display: none;" onclick="restartQuiz()">Rejouer</button>
+    </div>
+  </div>
+  </section>
     <footer>
         <p>&copy; 2025 Hackathon Ynov. Tous droits réservés.</p>
     </footer>
