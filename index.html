@@ -99,7 +99,32 @@
             </div>
         </div>
     </section>
+    <section id="game">
+        <h1>Jeu de Tri des Déchets</h1>
+  <p>Faites glisser chaque déchet dans la bonne poubelle pour apprendre à mieux recycler !</p>
 
+  <div class="container">
+    <div class="bin" data-type="recyclable" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <div class="bin-content"></div>
+    </div>
+    <div class="bin" data-type="verre" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <div class="bin-content"></div>
+    </div>
+    <div class="bin" data-type="ordures" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <div class="bin-content"></div>
+    </div>
+  </div>
+
+  <div class="items" id="itemsContainer">
+    <!-- Les items seront générés dynamiquement -->
+  </div>
+
+  <button id="resetBtn" onclick="resetGame()">Réinitialiser le jeu</button>
+
+  <audio id="sound-verre" src="sounds/verre.mp3"></audio>
+  <audio id="sound-ordures" src="sounds/poubelle.mp3"></audio>
+  <audio id="sound-recyclable" src="sounds/papier.mp3"></audio>
+  
     <!-- <footer>
         <p>&copy; 2025 Hackathon Ynov. Tous droits réservés.</p>
     </footer> -->
