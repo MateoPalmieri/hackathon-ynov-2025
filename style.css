@@ -104,3 +104,82 @@ footer {
     background-color: #2e8b57;
     transform: rotateY(180deg);
 }
+
+.container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+    }
+
+    .bin {
+      width: 150px;
+      height: 200px;
+      position: relative;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: top center;
+      padding-top: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+      border: none;
+    }
+
+    .bin[data-type="recyclable"] {
+      background-image: url('images/papier.png');
+    }
+
+    .bin[data-type="verre"] {
+      background-image: url('images/verre.png');
+    }
+
+    .bin[data-type="ordures"] {
+      background-image: url('images/poubelle.png');
+    }
+
+    .bin-content {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .bin-content::-webkit-scrollbar {
+      display: none;
+    }
+
+    .item {
+      width: 100px;
+      margin: 5px 0;
+      padding: 10px;
+      background-color: white;
+      border: 2px solid #555;
+      border-radius: 5px;
+      cursor: grab;
+    }
+
+    .items {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    #resetBtn {
+      margin-top: 30px;
+      margin-bottom: 40px;
+      padding: 10px 20px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
