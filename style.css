@@ -407,6 +407,10 @@ footer {
         padding: 7px;
       }
     }
+    #quiz2 {
+      display: flex;
+      justify-content: center;
+    }
     #quiz2-container {
       background: #ffffff;
       border-radius: 12px;
